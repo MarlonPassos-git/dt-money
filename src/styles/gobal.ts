@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { progressiveClamp } from "../assets/progressiveCSS/script";
+import { progressiveClamp, PXtoRem } from "../assets/progressiveCSS/script";
 
 
 export const GlobalStyle = createGlobalStyle`
@@ -14,6 +14,9 @@ export const GlobalStyle = createGlobalStyle`
         --text-title: #363f5f;
         --text-body: #969cb3;
         --shape: #ffffff;
+        --background-input: #E7E9EE;
+        --border-input: #D7D7D7;
+        --button-input: #33CC95;
 
         /* padding */
         
@@ -35,6 +38,8 @@ export const GlobalStyle = createGlobalStyle`
         color: blue;
         -webkit-font-smoothing: antialiased;
         min-height: 100vh;
+        max-width: 100vw;
+        overflow-x: hidden;
     };
 
     body, input, button, textarea {
@@ -56,4 +61,25 @@ export const GlobalStyle = createGlobalStyle`
 
     }
 
+    .react-modal-overlay {
+        display: grid;
+        place-items: center;
+        position: fixed;
+        inset: 0;
+
+
+        background-color: #00000050;
+    }
+
+    .react-modal-content { 
+        position: relative;
+        
+        width: 100%;
+        max-width: ${PXtoRem(576)};
+        padding: ${progressiveClamp(24, 64)} ${progressiveClamp(24, 48)} ${progressiveClamp(40, 64)};
+        border-radius: ${PXtoRem(4)};
+        
+        background-color: var(--background);
+
+    }
 `
