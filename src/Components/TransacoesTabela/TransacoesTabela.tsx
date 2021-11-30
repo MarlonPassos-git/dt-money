@@ -6,7 +6,7 @@ export function TransacaoTabela() {
 
     useEffect(() => {
         api.get("/transacoes")
-            .then(data => console.log(data.data));
+            .then(data => {});
     }, []);
 
     return (

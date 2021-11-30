@@ -17,11 +17,14 @@ export const GlobalStyle = createGlobalStyle`
         --background-input: #E7E9EE;
         --border-input: #D7D7D7;
         --button-input: #33CC95;
+        --botao-radio-background-ativo--entrada: #12A45410;
+        --botao-radio-background-ativo--saida: #E52E4D10;
 
         /* padding */
         
         --padding-side-container: ${progressiveClamp(24, 160)};
     }
+    
 
     * {
         margin: 0;

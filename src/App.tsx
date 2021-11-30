@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Dashboard } from './Components/Dashboard/Dashboard';
 import { Header } from './Components/Header/Header';
-import { GlobalStyle } from './styles/gobal';
+import { GlobalStyle } from './styles/global';
 import { NovaTransacaoModal } from './Components/NovatransacaoModal/NovaTransacaoModal';
 
 
