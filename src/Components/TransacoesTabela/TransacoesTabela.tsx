@@ -1,14 +1,27 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { api } from "../../services/api";
-import { Container } from "./style";
+import { Container, TDvalor } from "./style";
+
+interface transacoesPropiedades {
+    id: 1,
+    titulo: string,
+    valor: number,
+    tipo: string,
+    categoria: string,
+    data: string,
+}
+
 
 export function TransacaoTabela() {
 
+    const [transacoes, setTransacoes] = useState<transacoesPropiedades[]>([]);
+
     useEffect(() => {
         api.get("/transacoes")
-            .then(data => {});
+            .then(resposta => { setTransacoes(resposta.data.transacoes) });
     }, []);
 
+    console.log(transacoes);
     return (
         <Container>
             <table>
@@ -21,18 +34,16 @@ export function TransacaoTabela() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Almoço</td>
-                        <td>R$ 20,00</td>
-                        <td>Alimentação</td>
-                        <td>20/10/2020</td>
-                    </tr>
-                    <tr>
-                        <td>Almoço</td>
-                        <td>R$ 20,00</td>
-                        <td>Alimentação</td>
-                        <td>20/10/2020</td>
-                    </tr>
+                    {transacoes.map(transacao => (
+                        <tr key={transacao.id}>
+                            <td>{transacao.titulo}</td>
+                            <TDvalor
+                                tipoTransacao={transacao.tipo}
+                            >R${transacao.valor}</TDvalor>
+                            <td>{transacao.categoria}</td>
+                            <td>{transacao.data}</td>
+                        </tr>   
+                    ))}
                 </tbody>
             </table>
         </Container>

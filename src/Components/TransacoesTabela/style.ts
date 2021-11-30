@@ -31,3 +31,13 @@ export const Container = styled.section`
     }
 
 `
+
+interface propsTDvalor {
+    tipoTransacao: string;
+}
+
+export const TDvalor = styled.td<propsTDvalor>`
+    color: ${
+        props => props.tipoTransacao === 'entrada' ? 'var(--green)' : 'var(--red)'
+    }
+`
