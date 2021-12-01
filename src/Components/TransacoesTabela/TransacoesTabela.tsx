@@ -1,27 +1,16 @@
-import { useEffect, useState } from "react";
-import { api } from "../../services/api";
+import { useContext} from "react";
+
+import { TransacoesContexto } from "../../TransacoesContexto";
 import { Container, TDvalor } from "./style";
 
-interface transacoesPropiedades {
-    id: 1,
-    titulo: string,
-    valor: number,
-    tipo: string,
-    categoria: string,
-    data: string,
-}
+
 
 
 export function TransacaoTabela() {
+    const { transacoes } = useContext(TransacoesContexto);
 
-    const [transacoes, setTransacoes] = useState<transacoesPropiedades[]>([]);
+    
 
-    useEffect(() => {
-        api.get("/transacoes")
-            .then(resposta => { setTransacoes(resposta.data.transacoes) });
-    }, []);
-
-    console.log(transacoes);
     return (
         <Container>
             <table>
@@ -34,16 +23,29 @@ export function TransacaoTabela() {
                     </tr>
                 </thead>
                 <tbody>
-                    {transacoes.map(transacao => (
+                    {transacoes.map(transacao => {
+                        
+                        const valorFormatado = new Intl.NumberFormat('pt-BR', 
+                        { 
+                            style: 'currency', 
+                            currency: 'BRL' 
+                        }).format(transacao.valor);
+                        const dataFormatada = new Intl.DateTimeFormat('pt-BR').format(
+                            new Date(transacao.data)
+                        );
+
+                        return (
                         <tr key={transacao.id}>
                             <td>{transacao.titulo}</td>
                             <TDvalor
                                 tipoTransacao={transacao.tipo}
-                            >R${transacao.valor}</TDvalor>
+                            >
+                                {valorFormatado}
+                            </TDvalor>
                             <td>{transacao.categoria}</td>
-                            <td>{transacao.data}</td>
+                            <td>{dataFormatada}</td>
                         </tr>   
-                    ))}
+                    )})}
                 </tbody>
             </table>
         </Container>

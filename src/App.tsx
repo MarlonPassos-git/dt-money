@@ -3,6 +3,7 @@ import { Dashboard } from './Components/Dashboard/Dashboard';
 import { Header } from './Components/Header/Header';
 import { GlobalStyle } from './styles/global';
 import { NovaTransacaoModal } from './Components/NovatransacaoModal/NovaTransacaoModal';
+import { TransacoesFornecedor } from './TransacoesContexto';
 
 
 
@@ -14,12 +15,12 @@ export function App() {
   function abreMoldalDaTransacao () {
       setMoldaldaTransacaoEstaAberto(true);
   }
-  function fechaMoldalDaTransacao () {
+  function fechaMoldalDaTransacao () { 
       setMoldaldaTransacaoEstaAberto(false);
   }
 
   return (  
-    <>
+    <TransacoesFornecedor>
       <GlobalStyle />
       <Header onAbreMoldalDaTransacao={abreMoldalDaTransacao} />
       <Dashboard />
@@ -27,7 +28,7 @@ export function App() {
         estaAberto={moldaldaTransacaoEstaAberto}
         quandoFechar={fechaMoldalDaTransacao}
       />
-    </>
+    </TransacoesFornecedor>
   );
 }
 
