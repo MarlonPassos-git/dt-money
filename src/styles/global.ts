@@ -71,9 +71,11 @@ export const GlobalStyle = createGlobalStyle`
         place-items: center;
         position: fixed;
         inset: 0;
-
-
         background-color: #00000050;
+
+        @media (max-width: 576px) {
+            align-items: end;
+        }
     }
 
     .react-modal-content { 
@@ -85,6 +87,10 @@ export const GlobalStyle = createGlobalStyle`
         border-radius: ${PXtoRem(4)};
         
         background-color: var(--background);
+
+        @media (max-width: 576px) {
+            border-radius: ${PXtoRem(16)} ${PXtoRem(16)} 0 0;
+        }
 
     }
 `
