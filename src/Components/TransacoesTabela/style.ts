@@ -24,8 +24,16 @@ export const Container = styled.section`
             border: 0;
             background-color: var(--shape);
             padding: 0 ${progressiveClamp(24, 32)};
-            border-radius: ${PXtoRem(5)};
             
+            
+        }
+
+        td:first-child  {
+            border-radius: ${PXtoRem(5)} 0 0 ${PXtoRem(5)};
+        }
+
+        td:last-child {
+            border-radius: 0 ${PXtoRem(5)} ${PXtoRem(5)} 0;
         }
          
     }
