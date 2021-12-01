@@ -1,16 +1,25 @@
-import { Container, Preco, Titulo } from "./style";
+import { Container, Icone, Preco, Titulo } from "./style";
 
 interface cardResumoProps {
     titulo: string,
-    valor: number
+    valor: number,
+    icone: string,
+    background?: string ;
 }
 
 export function CardResumo(props: cardResumoProps) {
+
+    const valorFormatado = new Intl.NumberFormat('pt-BR', 
+                        { 
+                            style: 'currency', 
+                            currency: 'BRL' 
+                        }).format(props.valor);
+
     return (
-        <Container>
+        <Container background={props.background}>
             <Titulo >{props.titulo}</Titulo>
-            
-            <Preco>R$ {props.valor}</Preco>
+            <Preco>{valorFormatado}</Preco>
+            <Icone src={props.icone} />
         </Container>
     )
 }

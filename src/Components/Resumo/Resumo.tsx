@@ -3,18 +3,34 @@ import { useContext } from "react";
 import { CardResumo } from "../CardResumo/CardResumo";
 import { Container } from "./style";
 import { TransacoesContexto } from "../../TransacoesContexto";
+import iconEntrada from "../../assets/icon/entrada.svg";
+import iconSaida from "../../assets/icon/saida.svg";
+import iconTotal from "../../assets/icon/total.svg";
 
 export function Resumo() {
 
     const { transacoes } = useContext(TransacoesContexto);
 
-    
+    let entradas = 0;
+    let saidas = 0;
+    let total = 0;
+
+    transacoes.forEach(transacao => {
+        if (transacao.tipo === "entrada") {
+            entradas += transacao.valor;
+        } else {
+            saidas += transacao.valor;
+        }
+    })
+    total = entradas - saidas;
+
+    console.log(entradas, saidas);
 
     return (
         <Container>
-            <CardResumo titulo="Entradas" valor={0} />
-            <CardResumo titulo="Saidas" valor={0}/>
-            <CardResumo titulo="Total" valor={0}/>
+            <CardResumo icone={iconEntrada} titulo="Entradas" valor={entradas} />
+            <CardResumo icone={iconSaida}  titulo="Saidas" valor={saidas}/>
+            <CardResumo background={'var(--green)'} icone={iconTotal} titulo="Total" valor={total}/>
         </Container>
     );
 }

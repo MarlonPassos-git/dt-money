@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 import { progressiveClamp, PXtoRem } from '../../assets/progressiveCSS/script';
 
-export const Container = styled.div`
+interface ContainerProps {
+    background?: string;
+}
+export const Container = styled.div<ContainerProps>`
     display: grid;
     grid-template:
         "titulo icone" min-content
@@ -10,7 +13,9 @@ export const Container = styled.div`
     padding: ${progressiveClamp(18, 25)} ${PXtoRem(20)} ${progressiveClamp(42, 18)} ${progressiveClamp(22, 32)} ;
     height: ${progressiveClamp(200, 136)};
     width: ${progressiveClamp(300, 352)};
-    background-color: var(--shape);
+    background-color: ${
+        (props) => (props.background) ? props.background : 'var(--shape)'
+    };
     border-radius: ${PXtoRem(5)};
 
 `
@@ -30,5 +35,14 @@ export const Preco = styled.strong`
     color: #363F5F;
     grid-area: preco;
     margin-top: ${progressiveClamp(55 ,14)};
+
+`
+
+
+export const Icone = styled.img`
+    grid-area: icone;
+    width: ${PXtoRem(32)};
+    height: ${PXtoRem(32)};
+    justify-self: end;
 
 `
