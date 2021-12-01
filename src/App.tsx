@@ -3,7 +3,7 @@ import { Dashboard } from './Components/Dashboard/Dashboard';
 import { Header } from './Components/Header/Header';
 import { GlobalStyle } from './styles/global';
 import { NovaTransacaoModal } from './Components/NovatransacaoModal/NovaTransacaoModal';
-import { TransacoesFornecedor } from './TransacoesContexto';
+import { TransacoesFornecedor } from './hooks/useTransacoes';
 
 
 

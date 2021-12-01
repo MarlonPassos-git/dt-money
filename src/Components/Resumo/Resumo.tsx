@@ -2,14 +2,14 @@ import { useContext } from "react";
 
 import { CardResumo } from "../CardResumo/CardResumo";
 import { Container } from "./style";
-import { TransacoesContexto } from "../../TransacoesContexto";
 import iconEntrada from "../../assets/icon/entrada.svg";
 import iconSaida from "../../assets/icon/saida.svg";
 import iconTotal from "../../assets/icon/total.svg";
+import { useTransacoes } from "../../hooks/useTransacoes";
 
 export function Resumo() {
 
-    const { transacoes } = useContext(TransacoesContexto);
+    const { transacoes } = useTransacoes();
 
     let entradas = 0;
     let saidas = 0;

@@ -1,13 +1,13 @@
 import { useContext} from "react";
+import { useTransacoes } from "../../hooks/useTransacoes";
 
-import { TransacoesContexto } from "../../TransacoesContexto";
 import { Container, TDvalor } from "./style";
 
 
 
 
 export function TransacaoTabela() {
-    const { transacoes } = useContext(TransacoesContexto);
+    const { transacoes } = useTransacoes();
 
     
 
