@@ -6,9 +6,9 @@ import { TransacoesContexto } from "../../TransacoesContexto";
 
 export function Resumo() {
 
-    const transacoes = useContext(TransacoesContexto);
+    const { transacoes } = useContext(TransacoesContexto);
 
-    console.log(transacoes);
+    
 
     return (
         <Container>
